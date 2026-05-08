@@ -16,7 +16,13 @@ from freegames import path
 
 car = path('car.gif')
 tiles = list(range(32)) * 2
-state = {'mark': None}
+state = {'mark': None, 'taps': 0}
+
+def tap(x, y):
+    "Update mark and hidden tiles based on tap."
+    state['taps'] += 1
+    print(f"Total de taps: {state['taps']}")
+
 hide = [True] * 64
 
 
@@ -79,6 +85,12 @@ def draw():
 
     update()
     ontimer(draw, 100)
+    if not hide[count]:
+        x, y = xy(count)
+        up()
+        goto(x + 25, y + 5)
+        color('black')
+        write(tiles[count], align="center", font=('Arial', 30, 'normal'))
 
 
 shuffle(tiles)
