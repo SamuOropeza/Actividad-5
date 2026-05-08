@@ -66,7 +66,7 @@ def draw():
     """Draw image and tiles."""
     clear()
     goto(0, 0)
-    shape(car)
+    shape('fondo.gif')
     stamp()
 
     for count in range(64):
